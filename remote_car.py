@@ -1,45 +1,33 @@
 from gpiozero import Motor
 import curses
 
-flmotor = Motor(forward=16, backward=17)
-frmotor = Motor(forward=18, backward=13)
-blmotor = Motor(forward=9, backward=11)
-brmotor = Motor(forward=10, backward=12)
+lmotor = Motor(forward=16, backward=17)
+rmotor = Motor(forward=18, backward=13)
 
 def left():
 #    print('Left ...')
-    flmotor.backward()
-    frmotor.forward()
-    blmotor.backward()
-    brmotor.forward()
+    lmotor.backward()
+    rmotor.forward()
 
 def right():
 #    print('Right ...')
-    flmotor.forward()
-    frmotor.backward()
-    blmotor.forward()
-    brmotor.backward()
+    lmotor.forward()
+    rmotor.backward()
 
 def forward():
 #    print('Forwarding ...')
-    flmotor.forward()
-    frmotor.forward()
-    blmotor.forward()
-    brmotor.forward()
+    lmotor.forward()
+    rmotor.forward()
 
 def reverse():
 #    print('Reversing ...')
-    flmotor.backward()
-    frmotor.backward()
-    blmotor.backward()
-    brmotor.backward()
+    lmotor.backward()
+    rmotor.backward()
 
 def stop():
 #    print('Stopping ...')
-    flmotor.stop()
-    frmotor.stop()
-    blmotor.stop()
-    brmotor.stop()
+    lmotor.stop()
+    rmotor.stop()
 
 actions = {
     curses.KEY_UP:    forward,
