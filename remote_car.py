@@ -27,7 +27,7 @@ p2 = GPIO.PWM(en2, 1000)
 p2.start(100)
 print("\n")
 print("The default speed & direction of motor is LOW & Forward.....")
-print("r-run s-stop f-forward b-backward l-low m-medium h-high e-exit")
+print("r-run x-stop w-forward s-backward a-left d-right e-exit")
 print("\n")    
 
 while(1):
@@ -77,7 +77,7 @@ while(1):
         temp1=0
         x='z'   
         
-    elif x=='a':
+    elif x=='d':
         print("left")
         GPIO.output(in1,GPIO.HIGH)
         GPIO.output(in2,GPIO.LOW)
@@ -86,7 +86,7 @@ while(1):
         temp1=0
         x='z'   
         
-    elif x=='d':
+    elif x=='a':
         print("right")
         GPIO.output(in1,GPIO.LOW)
         GPIO.output(in2,GPIO.HIGH)
