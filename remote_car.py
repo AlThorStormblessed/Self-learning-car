@@ -1,5 +1,10 @@
 import RPi.GPIO as GPIO          
 from time import sleep
+from gpiozero import DistanceSensor
+
+ultrasonic = DistanceSensor(echo=26, trigger=6, max_distance = 4)
+ultrasonic2 = DistanceSensor(echo=16, trigger=5, max_distance = 4)
+#ultrasonic3 = DistanceSensor(echo=21, trigger=20, max_distance = 4)
 
 in1 = 24
 in2 = 23
@@ -33,7 +38,9 @@ print("\n")
 while(1):
 
     x=input()
-    
+    print("1: ", ultrasonic.distance*100)
+    print("2: ", ultrasonic2.distance*100)
+    #print("3: ", ultrasonic3.distance*100)
     if x=='r':
         print("run")
         if(temp1==1):
