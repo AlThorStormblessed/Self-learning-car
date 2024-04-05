@@ -4,6 +4,13 @@ from gpiozero import DistanceSensor
 import random
 import numpy as np
 import time
+import cv2 
+  
+  
+# define a video capture object 
+vid = cv2.VideoCapture(0) 
+vid.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
+vid.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
 
 ultrasonic = DistanceSensor(echo=26, trigger=6, max_distance = 4)
 ultrasonic2 = DistanceSensor(echo=16, trigger=5, max_distance = 4)
@@ -54,6 +61,12 @@ total_reward = 0
 alpha = .5
 gamma = 1
 for i in range(20000):
+    ret, frame = vid.read() 
+    
+    if ret: 
+        cv2.imshow('frame', frame) 
+        cv2.waitKey(2)
+        
     reward = 0
     action = np.argmax(q_table[(clean(ultrasonic.distance), clean(ultrasonic2.distance))])
     obs = (clean(ultrasonic.distance), clean(ultrasonic2.distance))
